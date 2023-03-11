@@ -9,6 +9,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 import RxViewController
+import RxGesture
 
 class ViewController: UIViewController {
 
@@ -21,29 +22,52 @@ class ViewController: UIViewController {
         setBind()
     }
 
-    
+   //slider 기본 세팅
     func setBind() {
+        
+        
         v.uiSlider.rx.value.subscribe { value in
             print("value : \(value)")
-            switch Float(value) {
-            case 0 ..< 0.20:
-                self.testFloat = 0
-                
-            case 0.22 ..< 0.50:
-                self.testFloat = 0.35
-            case 0.52 ..< 0.82 :
-                self.testFloat = 0.68
-            case 0.84 ..< 1.0 :
-                self.testFloat = 1.0
-            default :
-                self.v.uiSlider.value = self.testFloat
-            }
+            self.setSlideValue(value)
+
+        }
+        
+        v.uiSlider.rx.tapGesture().when(.recognized).subscribe { value in
+            print("value : \(value)")
+//            let pointTapped: CGPoint = gestureRecognizer.locationInView(self.view)
+            let pointTapped: CGPoint = value.location(in: self.view)
             
+
+            let positionOfSlider: CGPoint = self.v.uiSlider.frame.origin
+            let widthOfSlider: CGFloat = self.v.uiSlider.frame.size.width
+            let newValue = ((pointTapped.x - positionOfSlider.x) * CGFloat(self.v.uiSlider.maximumValue) / widthOfSlider)
+            self.setSlideValue(Float(newValue))
+//            self.v.uiSlider.setValue(Float(newValue), animated: true)
+        }
+    }
+    
+    func setSlideValue(_ value : Float) {
+        print("value : \(value)")
+        switch value {
+        case 0 ..< 0.27:
+            self.testFloat = 0
+            //0.7x
+        case 0.29 ..< 0.57:
+            self.testFloat = 0.35
+            //1.0x
+        case 0.59 ..< 0.87 :
+            self.testFloat = 0.68
+            //1.5x
+        case 0.89 ..< 1.1 :
+            self.testFloat = 1.0
+            //2.0x
+        default :
             self.v.uiSlider.value = self.testFloat
         }
         
-       
+        self.v.uiSlider.value = self.testFloat
     }
+    
 
 }
 
