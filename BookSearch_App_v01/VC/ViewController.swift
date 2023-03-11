@@ -12,9 +12,11 @@ import RxViewController
 import RxGesture
 
 class ViewController: UIViewController {
-
+  
     private lazy var v = MinaView()
+    private let disposeBag = DisposeBag()
     var testFloat : Float = 0.0
+    let step : Float = 5
     override func viewDidLoad() {
         super.viewDidLoad()
         print("sadfasdfsadfasdgasdg")
@@ -29,8 +31,10 @@ class ViewController: UIViewController {
         v.uiSlider.rx.value.subscribe { value in
             print("value : \(value)")
             self.setSlideValue(value)
+            let roundValue = round(value / self.step) * self.step
+            print("roundValue \(roundValue)")
 
-        }
+        }.disposed(by: disposeBag)
         
         v.uiSlider.rx.tapGesture().when(.recognized).subscribe { value in
             print("value : \(value)")
@@ -43,7 +47,7 @@ class ViewController: UIViewController {
             let newValue = ((pointTapped.x - positionOfSlider.x) * CGFloat(self.v.uiSlider.maximumValue) / widthOfSlider)
             self.setSlideValue(Float(newValue))
 //            self.v.uiSlider.setValue(Float(newValue), animated: true)
-        }
+        }.disposed(by: disposeBag)
     }
     
     func setSlideValue(_ value : Float) {
