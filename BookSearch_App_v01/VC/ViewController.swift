@@ -10,6 +10,7 @@ import RxCocoa
 import RxSwift
 import RxViewController
 import RxGesture
+import SnapKit
 
 class ViewController: UIViewController {
   
@@ -22,11 +23,66 @@ class ViewController: UIViewController {
         print("sadfasdfsadfasdgasdg")
         view = v
         setBind()
+        setView()
+    }
+    
+//    private enum Constant {
+//       static let someViewSize = UIScreen.main.isWiderThan375pt ? CGSize(width: 360, height: 300) : CGSize(width: 300, height: 200)
+//     }
+    
+    private enum Constant {
+      static let someViewSize = UIScreen.main.isWiderThan375pt ? CGSize(width: 360, height: 300) : CGSize(width: 300, height: 200)
+      static let otherViewWidthRatio = 0.6 // <-
+      static let otherViewHeightRatio = 0.2 // <-
     }
 
+//     private let someView: UIView = {
+//       let view = UIView()
+//       view.backgroundColor = .systemBlue
+//       return view
+//     }()
+
    //slider 기본 세팅
+    
+    func setView() {
+
+        self.v.secondView.snp.removeConstraints()
+        self.v.secondView.snp.remakeConstraints{ make in
+            make.top.equalTo(v.titleTopView.snp.bottom).offset(15)
+            make.left.right.equalToSuperview().inset(15)
+            make.height.equalToSuperview().multipliedBy(Constant.otherViewHeightRatio)
+        }
+        self.v.thridView.snp.removeConstraints()
+        self.v.thridView.snp.remakeConstraints{ make in
+            make.top.equalTo(v.secondView.snp.bottom).offset(15)
+            make.left.right.equalToSuperview().inset(15)
+            make.height.equalToSuperview().multipliedBy(Constant.otherViewHeightRatio)
+        }
+        self.v.fourhView.snp.removeConstraints()
+        self.v.fourhView.snp.remakeConstraints{ make in
+            make.top.equalTo(v.thridView.snp.bottom).offset(15)
+            make.left.right.equalToSuperview().inset(15)
+            make.height.equalToSuperview().multipliedBy(Constant.otherViewHeightRatio)
+        }
+        
+        self.v.sliderView.snp.removeConstraints()
+        v.sliderView.snp.makeConstraints{ make in
+            make.bottom.equalToSuperview()
+            make.left.right.equalToSuperview().inset(25)
+            make.height.equalToSuperview().multipliedBy(Constant.otherViewHeightRatio)
+        }
+    }
     func setBind() {
         
+//        UIScreen.mainScreen().screen
+        if DeviceManager.shared.isFourIncheDevices() {
+            print("asdfasdf")
+        }else {
+            print("asdfasdf333")
+            v.secondView.snp.updateConstraints{ make in
+                make.top.equalTo(v.titleTopView.snp.bottom).offset(15)
+            }
+        }
         
         v.uiSlider.rx.value.subscribe { value in
             print("value : \(value)")
@@ -49,6 +105,7 @@ class ViewController: UIViewController {
 //            self.v.uiSlider.setValue(Float(newValue), animated: true)
         }.disposed(by: disposeBag)
     }
+    
     
     func setSlideValue(_ value : Float) {
         print("value : \(value)")

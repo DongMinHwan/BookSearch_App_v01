@@ -57,6 +57,16 @@ class MinaView : UIView{
         $0.layer.cornerRadius = 8
     }
     
+    let secondView = UIView().then {
+        $0.backgroundColor = .red
+    }
+    let thridView = UIView().then {
+        $0.backgroundColor = .blue
+    }
+    let fourhView = UIView().then {
+        $0.backgroundColor = .yellow
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -76,6 +86,9 @@ class MinaView : UIView{
         titleTopView.addSubview(searchTextFiled)
         titleTopView.addSubview(searchButton)
         main.addSubview(sliderView)
+        main.addSubview(secondView)
+        main.addSubview(thridView)
+        main.addSubview(fourhView)
         sliderView.addSubview(uiSlider)
         sliderView.addSubview(stackView)
 
@@ -86,6 +99,7 @@ class MinaView : UIView{
     }
     
     func setLayout(){
+        
         main.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide.snp.top)
             make.left.right.equalToSuperview()
@@ -110,7 +124,25 @@ class MinaView : UIView{
             make.width.equalTo(35)
             make.left.equalTo(searchTextFiled.snp.right).offset(5)
         }
-//
+        
+        secondView.snp.makeConstraints { make in
+            make.top.equalTo(titleTopView.snp.bottom).offset(15)
+            make.left.right.equalToSuperview().inset(15)
+            make.height.equalTo(140)
+        }
+        
+        thridView.snp.makeConstraints { make in
+            make.top.equalTo(secondView.snp.bottom).offset(15)
+            make.left.right.equalTo(secondView)
+            make.height.equalTo(140)
+        }
+        
+        fourhView.snp.makeConstraints { make in
+            make.top.equalTo(thridView.snp.bottom).offset(15)
+            make.left.right.equalTo(secondView)
+            make.height.equalTo(140)
+        }
+        
         sliderView.snp.makeConstraints{ make in
             make.bottom.equalToSuperview()
             make.left.right.equalToSuperview().inset(25)
