@@ -15,4 +15,5 @@ target 'BookSearch_App_v01' do
   pod 'RxCocoa'
   pod 'RxViewController'
   pod 'DeviceKit', '~> 2.0' # https://github.com/devicekit/DeviceKit
+  pod 'PullUpController'
 end

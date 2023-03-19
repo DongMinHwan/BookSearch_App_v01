@@ -16,6 +16,7 @@ class ViewController: UIViewController {
   
     private lazy var v = MinaView()
     private let disposeBag = DisposeBag()
+    private var originalPullUpControllerViewSize: CGSize = .zero
     var testFloat : Float = 0.0
     let step : Float = 5
     override func viewDidLoad() {
@@ -104,6 +105,16 @@ class ViewController: UIViewController {
             self.setSlideValue(Float(newValue))
 //            self.v.uiSlider.setValue(Float(newValue), animated: true)
         }.disposed(by: disposeBag)
+        
+        v.secondBtn.rx.tap.bind {
+//            let vc = SecondViewController()
+//            vc.modalPresentationStyle = .fullScreen
+//            self.present(vc, animated: true)
+            self.addPullUpController(animated: true)
+            
+        }
+        
+        
     }
     
     
@@ -128,7 +139,28 @@ class ViewController: UIViewController {
         
         self.v.uiSlider.value = self.testFloat
     }
+    private func addPullUpController(animated: Bool) {
+        let pullUpController = makeSearchViewControllerIfNeeded()
+        _ = pullUpController.view // call pullUpController.viewDidLoad()
+        addPullUpController(pullUpController,
+                            initialStickyPointOffset: pullUpController.initialPointOffset,
+                            animated: animated)
+    }
     
+    private func makeSearchViewControllerIfNeeded() -> SecondViewController {
+        print("sdfasdfasdf3133")
+        let currentPullUpController = children
+            .filter({ $0 is SecondViewController })
+            .first as? SecondViewController
+//        let pullUpController: SecondViewController = currentPullUpController ?? UIStoryboard(name: "Main",bundle: nil).instantiateViewController(withIdentifier: "SearchViewController") as! SecondViewController
+        let pullupcontroller = SecondViewController()
+
+        if originalPullUpControllerViewSize == .zero {
+            originalPullUpControllerViewSize = pullupcontroller.view.bounds.size
+        }
+
+        return pullupcontroller
+    }
 
 }
 

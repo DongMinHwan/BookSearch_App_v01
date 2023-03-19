@@ -1,6 +1,7 @@
 PODS:
   - Alamofire (5.6.2)
   - DeviceKit (2.3.0)
+  - PullUpController (0.8.0)
   - RxCocoa (6.5.0):
     - RxRelay (= 6.5.0)
     - RxSwift (= 6.5.0)
@@ -20,6 +21,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 5.2)
   - DeviceKit (~> 2.0)
+  - PullUpController
   - RxCocoa
   - RxGesture
   - RxSwift
@@ -32,6 +34,7 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - DeviceKit
+    - PullUpController
     - RxCocoa
     - RxGesture
     - RxRelay
@@ -53,6 +56,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
   DeviceKit: da103891aa928d89f64ea8dd8aca738c5f3d8ac0
+  PullUpController: 2f7ccaa0f35b31b47e3efbe1854c7f781552b3c7
   RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
   RxGesture: f3efb47ed2d26a8082f7b660d4a59970e275a7f8
   RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
@@ -62,6 +66,6 @@ SPEC CHECKSUMS:
   Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
   Toaster: c3473963c78e8cabbf6ea6f11ad0fdaae6f54987
 
-PODFILE CHECKSUM: 607dcaf3be485a666af363e922382ba51c847c67
+PODFILE CHECKSUM: a1e6ff0243bf57b6e91cc6c6694c72e7481b1b30
 
 COCOAPODS: 1.11.2

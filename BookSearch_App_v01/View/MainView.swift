@@ -60,6 +60,11 @@ class MinaView : UIView{
     let secondView = UIView().then {
         $0.backgroundColor = .red
     }
+    
+    let secondBtn = UIButton().then {
+        $0.backgroundColor = .black
+        $0.setTitle("두번째버튼", for: .normal)
+    }
     let thridView = UIView().then {
         $0.backgroundColor = .blue
     }
@@ -87,6 +92,7 @@ class MinaView : UIView{
         titleTopView.addSubview(searchButton)
         main.addSubview(sliderView)
         main.addSubview(secondView)
+        secondView.addSubview(secondBtn)
         main.addSubview(thridView)
         main.addSubview(fourhView)
         sliderView.addSubview(uiSlider)
@@ -129,6 +135,11 @@ class MinaView : UIView{
             make.top.equalTo(titleTopView.snp.bottom).offset(15)
             make.left.right.equalToSuperview().inset(15)
             make.height.equalTo(140)
+        }
+        
+        secondBtn.snp.makeConstraints { make in
+            make.centerX.centerY.equalToSuperview()
+            make.height.width.equalTo(84)
         }
         
         thridView.snp.makeConstraints { make in

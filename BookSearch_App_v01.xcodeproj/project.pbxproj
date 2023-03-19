@@ -19,6 +19,8 @@
 		7FB4B91829B30AAB0081F046 /* LaunchScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB4B91729B30AAB0081F046 /* LaunchScreenVC.swift */; };
 		7FBC73C829C0AFF600E0F8E0 /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBC73C729C0AFF600E0F8E0 /* DeviceManager.swift */; };
 		7FBC73CA29C0B55900E0F8E0 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBC73C929C0B55900E0F8E0 /* Extension.swift */; };
+		7FBC73CC29C7416300E0F8E0 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBC73CB29C7416300E0F8E0 /* SecondViewController.swift */; };
+		7FBC73CE29C7418B00E0F8E0 /* SecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBC73CD29C7418B00E0F8E0 /* SecondView.swift */; };
 		B1D83DF628E53FA9CD5C21F6 /* Pods_BookSearch_App_v01.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 530589C2B46B56C89CE763CC /* Pods_BookSearch_App_v01.framework */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +42,8 @@
 		7FB4B91729B30AAB0081F046 /* LaunchScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenVC.swift; sourceTree = "<group>"; };
 		7FBC73C729C0AFF600E0F8E0 /* DeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
 		7FBC73C929C0B55900E0F8E0 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		7FBC73CB29C7416300E0F8E0 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		7FBC73CD29C7418B00E0F8E0 /* SecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				7FB4B91529B308530081F046 /* MainView.swift */,
+				7FBC73CD29C7418B00E0F8E0 /* SecondView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -130,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				7FB4B8F929B2F8C20081F046 /* ViewController.swift */,
+				7FBC73CB29C7416300E0F8E0 /* SecondViewController.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -277,9 +283,11 @@
 				7FBC73C829C0AFF600E0F8E0 /* DeviceManager.swift in Sources */,
 				7FB4B91429B2FDC60081F046 /* ErrorModel.swift in Sources */,
 				7FB4B91629B308530081F046 /* MainView.swift in Sources */,
+				7FBC73CE29C7418B00E0F8E0 /* SecondView.swift in Sources */,
 				7FB4B8FA29B2F8C20081F046 /* ViewController.swift in Sources */,
 				7FB4B91229B2FD6B0081F046 /* Request.swift in Sources */,
 				7FB4B8F629B2F8C20081F046 /* AppDelegate.swift in Sources */,
+				7FBC73CC29C7416300E0F8E0 /* SecondViewController.swift in Sources */,
 				7FB4B90F29B2FD000081F046 /* Constant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
