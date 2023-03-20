@@ -18,6 +18,7 @@ class SecondViewController: PullUpController {
     private lazy var v = SecondView()
     public var portraitSize: CGSize = .zero
     public var landscapeFrame: CGRect = .zero
+    
     private var safeAreaAdditionalOffset: CGFloat {
         hasSafeArea ? 20 : 0
     }
@@ -25,7 +26,8 @@ class SecondViewController: PullUpController {
     var initialPointOffset: CGFloat {
         switch initialState {
         case .contracted:
-            return (v.firstView.frame.height ?? 0) + safeAreaAdditionalOffset
+            return UIScreen.main.bounds.size.height
+            
         case .expanded:
             return pullUpControllerPreferredSize.height
         }
@@ -33,11 +35,12 @@ class SecondViewController: PullUpController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view = v
-        print("dsfasdfasdfsadfasdf")
-        print("")
+        print("first01 : \(safeAreaAdditionalOffset)")
+        print("first02 : \(v.secondView.frame.height)" )
+        
         portraitSize = CGSize(width: min(UIScreen.main.bounds.width, UIScreen.main.bounds.height),
-                              height: v.secondView.frame.maxY)
-        landscapeFrame = CGRect(x: 5, y: 50, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                              height: v.thirdView.frame.maxY)
+        landscapeFrame = CGRect(x: 5, y: 50, width: 280.0, height: 812)
     }
     
  
@@ -66,9 +69,9 @@ class SecondViewController: PullUpController {
         print("initialState : \(initialState)")
         switch initialState {
         case .contracted:
-            return [v.firstView.frame.maxY]
+            return [v.frame.maxY]
         case .expanded:
-            return [v.secondView.frame.maxY + safeAreaAdditionalOffset, v.firstView.frame.maxY]
+            return [v.thirdView.frame.maxY + safeAreaAdditionalOffset, v.firstView.frame.maxY]
         }
     }
     
@@ -86,7 +89,7 @@ class SecondViewController: PullUpController {
                            delay: 0,
                            usingSpringWithDamping: 0.7,
                            initialSpringVelocity: 0,
-                           options: .curveEaseInOut,
+                           options: .layoutSubviews,
                            animations: animations,
                            completion: completion)
         default:

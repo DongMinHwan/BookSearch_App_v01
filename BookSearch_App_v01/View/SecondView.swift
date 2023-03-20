@@ -23,6 +23,11 @@ class SecondView : UIView {
     let thirdView = UIView().then {
         $0.backgroundColor = .blue
     }
+    
+    let label = UILabel().then {
+        $0.text = "황동민"
+        $0.font = .systemFont(ofSize: 25)
+    }
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -40,6 +45,7 @@ class SecondView : UIView {
         addSubview(firstView)
         addSubview(secondView)
         addSubview(thirdView)
+        thirdView.addSubview(label)
     }
     
     func setLayout() {
@@ -60,6 +66,12 @@ class SecondView : UIView {
             make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom)
             make.left.right.equalToSuperview().inset(30)
             make.height.equalTo(200)
+        }
+        
+        label.snp.makeConstraints { make in
+            make.centerY.centerX.equalToSuperview()
+            make.width.height.equalTo(80)
+            
         }
     }
 }

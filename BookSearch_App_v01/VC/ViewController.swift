@@ -153,6 +153,7 @@ class ViewController: UIViewController {
             .filter({ $0 is SecondViewController })
             .first as? SecondViewController
 //        let pullUpController: SecondViewController = currentPullUpController ?? UIStoryboard(name: "Main",bundle: nil).instantiateViewController(withIdentifier: "SearchViewController") as! SecondViewController
+  
         let pullupcontroller = SecondViewController()
 
         if originalPullUpControllerViewSize == .zero {
